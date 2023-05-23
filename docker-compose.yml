@@ -1,0 +1,79 @@
+version: "3.8"
+services:
+  improve-text-AI-app:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    container_name: improve-text-AI-app
+    restart: always
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "
+             python3 manage.py makemigrations &&
+             python3 manage.py migrate &&
+             python3 manage.py collectstatic --no-input &&
+             daphne -b 0.0.0.0 -p 8000 improve_text_AI.asgi:application"
+    volumes:
+      - .:/app
+      - static-volume:/app/staticfiles
+      - media-volume:/app/media
+    networks:
+      - improve-text-AI-network
+    environment:
+      - PSQL_USER=${PSQL_USER}
+      - PSQL_PASSWORD=${PSQL_PASSWORD}
+      - PSQL_DB=${PSQL_NAME}
+      - PSQL_HOST=improve-text-AI-db
+      - PSQL_PORT=${PSQL_PORT}
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
+      - DJANGO_DEBUG=${DJANGO_DEBUG}
+    logging:
+            driver: "json-file"
+            options:
+                max-size: "50m"
+    depends_on:
+      - improve-text-AI-db
+  improve-text-AI-nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    container_name: improve-text-AI-nginx
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - improve-text-AI-network
+    volumes:
+      - static-volume:/var/www/app/staticfiles
+      - media-volume:/var/www/app/media
+    depends_on:
+      - improve-text-AI-app
+  improve-text-AI-db:
+    image: postgres:15.1-alpine
+    container_name: improve-text-AI-db
+    restart: always
+    environment:
+      - POSTGRES_USER=${PSQL_USER}
+      - POSTGRES_PASSWORD=${PSQL_PASSWORD}
+      - POSTGRES_DB=${PSQL_NAME}
+    ports:
+      - '${PSQL_PORT}:${PSQL_PORT}'
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - improve-text-AI-network
+    logging:
+          driver: "json-file"
+          options:
+              max-size: "50m"
+volumes:
+  static-volume:
+  media-volume:
+  db:
+    driver: local
+networks:
+  improve-text-AI-network:
+    external: true
+    driver: bridge
