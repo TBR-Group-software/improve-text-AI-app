@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+{% load compress %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Improve text AI">
+        <meta name="keywords" content="Improve text AI">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- font roboto -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+              rel="stylesheet">
+        <!-- static -->
+        {% block imports %}
+            {% compress css %}
+                <link type="text/x-scss"
+                      rel="stylesheet"
+                      href="{% static 'scss/base.scss' %}">
+            {% endcompress %}
+        {% endblock imports %}
+        <title>
+            {% block title %}
+                Improve text AI
+            {% endblock title %}
+        </title>
+    </head>
+    <body>
+        {% include "includes/messages.html" %}
+        {% block content %}
+            Improve text AI
+        {% endblock content %}
+    </div>
+</div>
+</body>
+</html>
