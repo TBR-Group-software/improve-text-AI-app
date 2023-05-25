@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% load compress %}
+{% block imports %}
+    {{ block.super }}
+    {% compress css %}
+        <link rel="stylesheet"
+              type="text/x-scss"
+              href="{% static 'scss/index.scss' %}" />
+    {% endcompress %}
+    {% compress js %}
+        <script src="{% static 'js/index.js' %}"></script>
+    {% endcompress %}
+{% endblock imports %}
+{% block content %}
+    <div class="editor-container">
+        <h1 class="col-12 text-center mt-3">Editor</h1>
+        <div class="actions col-12 justify-content-center mb-3">
+            <button type="button"
+                    class="btn btn-primary"
+                    id="improve"
+                    onclick="improveText(this)">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>Improve
+            </button>
+            <button type="button" class="btn btn-primary" id="correct" onclick="improveText(this)">Correct grammer</button>
+            <button type="button" class="btn btn-primary" id="shorter" onclick="improveText(this)">Make shorter</button>
+            <button type="button" class="btn btn-primary" id="longer" onclick="improveText(this)">Make longer</button>
+        </div>
+        <div class="textarea-container col-12">
+            <textarea id="editor" name="editor" placeholder="Type your text here..."></textarea>
+        </div>
+    </div>
+{% endblock content %}

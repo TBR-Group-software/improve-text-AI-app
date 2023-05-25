@@ -7,7 +7,8 @@ from django.http import (
 
 
 class IndexView(View):
-    '''Index view.'''
+    """Index view."""
+
     def get(self, request: HttpRequest) -> HttpResponse:
-        '''GET request handler.'''
-        return render(request, "base.html")
+        """GET request handler."""
+        return render(request, "index.html")

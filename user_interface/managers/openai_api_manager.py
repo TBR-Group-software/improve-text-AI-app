@@ -5,7 +5,8 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 
 class OpenAiApiManager:
-    def send_api_request(self, prompt: str, instructions: str) -> str:
+    def send_api_request(self, text: str, instructions: str) -> str:
+        """Send API request."""
         completion = openai.ChatCompletion.create(
             model=os.environ.get("OPENAI_ENGINE"),
             messages=[
@@ -13,10 +14,12 @@ class OpenAiApiManager:
                     "role": "system",
                     "content": f"You are a grammar improvement AI. {instructions}",
                 },
-                {"role": "user", "content": prompt},
+                {"role": "user", "content": text},
             ],
         )
-        if type(completion) == dict:
-            return completion['choices'][0]['message']['content']
-        
-        raise Exception(f"OpenAI API returned unexpected response. {completion}")
+        try:
+            return completion["choices"][0]["message"]["content"]  # type: ignore
+        except ValueError as e:
+            raise ValueError(
+                f"OpenAI API returned unexpected response. {completion} {e}"
+            )

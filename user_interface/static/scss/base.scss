@@ -1,2 +1,34 @@
 @import "custom";
 
+body {
+    background-color: #19376D;
+    color: #A5D7E8;
+}
+
+.bg-dark {
+    background-color: #0B2447 !important;
+}
+
+.navbar-dark {
+    .navbar-nav {
+        .nav-link {
+            color: rgb(115, 152, 164) !important;
+        }
+    }
+
+    .navbar-brand {
+        color: #A5D7E8;
+    }
+}
+
+.btn-primary {
+    background-color: #A5D7E8 !important;
+    border-color: #A5D7E8 !important;
+    color: #0B2447 !important;
+
+    &:hover{
+        background-color: #576CBC !important;
+        border-color: #576CBC !important;
+        color: #0B2447 !important;
+    }
+}
