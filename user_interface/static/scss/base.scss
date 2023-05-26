@@ -21,6 +21,10 @@ body {
     }
 }
 
+.btn{
+    border-radius: 15px;
+}
+
 .btn-primary {
     background-color: #A5D7E8 !important;
     border-color: #A5D7E8 !important;
@@ -31,4 +35,13 @@ body {
         border-color: #576CBC !important;
         color: #0B2447 !important;
     }
+}
+
+.text-primary {
+    color: #A5D7E8 !important;
+}
+
+.alert{
+    border-radius: 15px;
+
 }
