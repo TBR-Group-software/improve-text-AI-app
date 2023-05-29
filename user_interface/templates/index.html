@@ -1,14 +1,4 @@
 {% extends "base.html" %}
-{% load static %}
-{% load compress %}
-{% block imports %}
-    {{ block.super }}
-    {% compress css %}
-        <link rel="stylesheet"
-              type="text/x-scss"
-              href="{% static 'scss/index.scss' %}" />
-    {% endcompress %}
-{% endblock imports %}
 {% block content %}
     <div class="container py-5">
         <h1 class="text-center">Improve text AI 👨‍💻</h1>
