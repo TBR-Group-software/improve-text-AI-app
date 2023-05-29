@@ -101,23 +101,6 @@ function enableButton() {
     };
 }
 
-function createAlert(type, message) {
-    const alert = document.createElement('div');
-    alert.classList.add('alert', `alert-${type}`, 'alert-dismissible', 'fade', 'show', 'position-absolute', 'message-alert');
-    const alectConteiner = document.createElement('div');
-    alectConteiner.innerHTML = message;
-    const closeButton = document.createElement('button');
-    closeButton.classList.add('btn-close');
-    closeButton.setAttribute('type', 'button');
-    closeButton.setAttribute('data-bs-dismiss', 'alert');
-    alectConteiner.appendChild(closeButton);
-    alert.appendChild(alectConteiner);
-    const screen = document.querySelector('.container');
-    screen.prepend(alert);
-
-    return alert;
-}
-
 function disableAll() {
     disableButton();
     disableTextArea();
@@ -128,4 +111,11 @@ function enableAll() {
     enableButton();
     enableTextArea();
     enableRusultTextArea();
+}
+
+function copyResult(){
+    const result = document.getElementById('result');
+    result.select();
+    document.execCommand("copy");
+    createAlert('info', 'Result copied to clipboard');
 }

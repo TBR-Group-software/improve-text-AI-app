@@ -16,6 +16,9 @@
         <script src="https://kit.fontawesome.com/1d25b11aa0.js"
                 crossorigin="anonymous"></script>
         <!-- static -->
+        {% compress js %}
+            <script src="{% static 'js/base.js' %}"></script>
+        {% endcompress %}
         {% block imports %}
             {% compress css %}
                 <link type="text/x-scss"
