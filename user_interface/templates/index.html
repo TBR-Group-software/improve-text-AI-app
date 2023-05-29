@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% load compress %}
+{% block imports %}
+    {{ block.super }}
+    {% compress css %}
+        <link rel="stylesheet"
+              type="text/x-scss"
+              href="{% static 'scss/index.scss' %}" />
+    {% endcompress %}
+{% endblock imports %}
+{% block content %}
+    <div class="container py-5">
+        <h1 class="text-center">Improve text AI 👨‍💻</h1>
+        <div class="my-5">
+            <h2 class="text-center">Key Features</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <h3>Interactive Text Editing 💬</h3>
+                            <p>
+                                Engage in a dynamic conversation with ChatGPT to collaboratively edit your text. It's like having a personal AI assistant right at your fingertips, ready to provide suggestions, rephrase sentences, and enhance your writing in real-time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <h3>Code Optimization ✨</h3>
+                            <p>
+                                Programmers, rejoice! Our platform supports code editing too. Easily tweak, debug, and refine your code with the help of ChatGPT's intelligent suggestions. Say goodbye to those frustrating syntax errors and let our AI companion assist you in achieving cleaner, more efficient code.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <h3>Multi-Language Support 🌍</h3>
+                            <p>
+                                Language barriers? Not here! Our platform offers support for a wide range of programming languages and natural languages. Whether you're writing in Python, Java, JavaScript, or conversing in English, Spanish, French, or any other language, our AI will understand you and help you express yourself effectively.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <h3>Smart Autocomplete 🔍</h3>
+                            <p>
+                                Tired of constantly searching for the right word? Our smart autocomplete feature suggests context-aware completions, saving you time and effort. It's like having a brilliant language model right beside you, ready to assist with the perfect word or phrase.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <h3>No Ads, Completely Free! 🆓❌</h3>
+                            <p>
+                                We believe in providing an ad-free experience for our users. Enjoy uninterrupted editing and coding sessions without any distractions. Our platform is completely free to use, so you can focus on what matters most: creating and refining your content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <h2>Get Started Today! 🚀</h2>
+            <p>
+                Join our community of writers, programmers, and enthusiasts who are leveraging the power of ChatGPT to supercharge their editing experience. Whether you're a professional or a beginner, our platform provides an inclusive and user-friendly environment for all.
+            </p>
+            <p>
+                Start exploring the possibilities and unleash your creativity with our innovative text and code editing features. Get ready to redefine the way you interact with language and code.
+            </p>
+            <a href="{% url 'account:register' %}" class="btn btn-primary btn-lg">Try it now and witness the magic unfold! ✨✍️</a>
+        </div>
+    </div>
+{% endblock content %}
