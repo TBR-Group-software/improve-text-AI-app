@@ -1,10 +1,12 @@
 import json
 
 from django.http import HttpRequest, JsonResponse
+from django.contrib.auth.decorators import login_required
 
 from user_interface.managers import ImproveTextManager
 
 
+@login_required(redirect_field_name="redirect_to", login_url="login")
 def improve_text_view(request: HttpRequest) -> JsonResponse:
     """Improve text view."""
     request_data = json.loads(request.body.decode("utf-8"))

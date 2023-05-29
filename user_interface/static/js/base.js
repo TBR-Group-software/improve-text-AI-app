@@ -23,7 +23,7 @@ function createAlert(type, message) {
     const container = document.querySelector('.container');
     container.prepend(alert);
 
-    closeAlert();
+    //closeAlert();
 
     return alert;
 }

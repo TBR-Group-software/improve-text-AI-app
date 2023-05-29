@@ -23,4 +23,5 @@ urlpatterns = [
         "",
         include(("user_interface.urls", "user_interface"), namespace="user_interface"),
     ),
+    path("accounts/", include(("account.urls", "account"), namespace="account")),
 ]

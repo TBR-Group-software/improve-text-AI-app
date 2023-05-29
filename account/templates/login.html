@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% load compress %}
+{% block imports %}
+    {{ block.super }}
+    {% compress css %}
+        <link type="text/x-scss"
+              rel="stylesheet"
+              href="{% static 'scss/account.scss' %}">
+    {% endcompress %}
+{% endblock imports %}
+{% block title %}
+    Login
+{% endblock title %}
+{% block content %}
+    <div class="auth">
+        <h1 class="text-center h3 mb-4">Login</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.username }}
+            {{ form.password }}
+            <div>
+                <button class="btn btn-primary login-button" type="submit">Login</button>
+            </div>
+        </form>
+        <p class="text-center mt-4">
+            New user? <a class="underline-href" href="{% url 'account:register' %}">Create account</a>
+        </p>
+    </div>
+{% endblock content %}

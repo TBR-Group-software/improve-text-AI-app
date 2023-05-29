@@ -1,0 +1,24 @@
+input {
+    margin-bottom: 15px !important;
+    max-width: 300px;
+    margin: auto;
+}
+
+.login-button {
+    margin: auto;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+}
+
+.auth {
+    margin-top: 10%;
+}
+
+.alert {
+    width: 100%;
+    max-width: 300px;
+    position: absolute !important;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
