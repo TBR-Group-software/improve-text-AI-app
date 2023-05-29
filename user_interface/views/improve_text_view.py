@@ -10,12 +10,15 @@ from user_interface.managers import ImproveTextManager
 def improve_text_view(request: HttpRequest) -> JsonResponse:
     """Improve text view."""
     request_data = json.loads(request.body.decode("utf-8"))
-    text = request_data["text"]
-    type = request_data["type"]
+    text = request_data.get("text")
+    text_type = request_data.get("type")
 
-    if text:
+    if text and text_type:
         improve_text_manager = ImproveTextManager()
-        improved_text = improve_text_manager.improve_text(text, type)
-        return JsonResponse({"text": improved_text})
+        try:
+            improved_text = improve_text_manager.improve_text(text, text_type)
+            return JsonResponse({"text": improved_text})
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
 
     return JsonResponse({"text": False})

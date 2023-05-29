@@ -1,24 +1,33 @@
+$input-margin-bottom: 15px;
+$input-max-width: 300px;
+
 input {
-    margin-bottom: 15px !important;
-    max-width: 300px;
-    margin: auto;
+  margin-bottom: $input-margin-bottom !important;
+  max-width: $input-max-width;
+  margin: auto;
 }
 
 .login-button {
-    margin: auto;
-    display: block;
-    width: 100%;
-    max-width: 300px;
+  margin: auto;
+  display: block;
+  width: 100%;
+  max-width: $input-max-width;
 }
 
 .auth {
-    margin-top: 10%;
+  margin-top: 10%;
 }
 
+$alert-max-width: 300px;
+$alert-position: absolute;
+$alert-left: 50%;
+$alert-transform-x: -50%;
+$alert-transform-y: -50%;
+
 .alert {
-    width: 100%;
-    max-width: 300px;
-    position: absolute !important;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: $alert-max-width;
+  position: $alert-position !important;
+  left: $alert-left;
+  transform: translate($alert-transform-x, $alert-transform-y);
 }

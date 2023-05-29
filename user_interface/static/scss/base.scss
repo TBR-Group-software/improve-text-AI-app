@@ -1,37 +1,63 @@
 @import "custom";
 
+$body-bg-color: #19376D;
+$body-text-color: #A5D7E8;
+$dark-bg-color: #0B2447;
+$dark-link-color: rgb(115, 152, 164);
+$active-link-color: #A5D7E8;
+$primary-btn-bg-color: #A5D7E8;
+$primary-btn-border-color: #A5D7E8;
+$primary-btn-text-color: #0B2447;
+$primary-btn-hover-bg-color: #576CBC;
+$primary-btn-hover-border-color: #576CBC;
+$primary-btn-hover-text-color: #0B2447;
+$primary-text-color: #A5D7E8;
+$alert-border-radius: 15px;
+$navbar-toggler-color: #A5D7E8;
+$input-border-radius: 15px;
+$input-bg-color: #A5D7E8;
+$input-border-color: #A5D7E8;
+$input-text-color: #0B2447;
+$input-hover-border-color: #576CBC;
+$input-hover-bg-color: #576CBC;
+$input-hover-text-color: #0B2447;
+$link-color: #A5D7E8;
+$link-border-color: transparent;
+$link-hover-color: #fff;
+$link-hover-border-color: #A5D7E8;
+
 body {
-    background-color: #19376D;
-    color: #A5D7E8;
+    background-color: $body-bg-color;
+    color: $body-text-color;
 }
 
 .bg-dark {
-    background-color: #0B2447 !important;
+    background-color: $dark-bg-color !important;
 }
 
 .navbar-dark {
     .navbar-nav {
         .nav-link {
-            color: rgb(115, 152, 164);
+            color: $dark-link-color;
             padding: 6px 2px 2px 2px;
             margin: 0 6px 0 6px;
             border-bottom: 2px solid transparent;
 
             &:hover {
-                color: #A5D7E8;
+                color: $active-link-color;
                 border-bottom: 2px solid;
                 transition: 0.1s;
             }
         }
 
         .active {
-            color: #A5D7E8;
+            color: $active-link-color;
             border-bottom: 2px solid;
         }
     }
 
     .navbar-brand {
-        color: #A5D7E8;
+        color: $active-link-color;
     }
 }
 
@@ -40,51 +66,49 @@ body {
 }
 
 .btn-primary {
-    background-color: #A5D7E8 !important;
-    border-color: #A5D7E8 !important;
-    color: #0B2447 !important;
+    background-color: $primary-btn-bg-color !important;
+    border-color: $primary-btn-border-color !important;
+    color: $primary-btn-text-color !important;
 
     &:hover {
-        background-color: #576CBC !important;
-        border-color: #576CBC !important;
-        color: #0B2447 !important;
+        background-color: $primary-btn-hover-bg-color !important;
+        border-color: $primary-btn-hover-border-color !important;
+        color: $primary-btn-hover-text-color !important;
     }
 }
 
 .text-primary {
-    color: #A5D7E8 !important;
+    color: $primary-text-color !important;
 }
 
 .alert {
-    border-radius: 15px;
-
+    border-radius: $alert-border-radius;
 }
 
 .navbar-toggler {
-    color: #A5D7E8;
+    color: $navbar-toggler-color;
 }
-
 
 input[type="text"],
 input[type="password"],
 input[type="email"] {
-    border-radius: 15px;
+    border-radius: $input-border-radius;
     border: none;
     padding: 0.5rem;
 }
 
-p{
-    color: rgb(115, 152, 164)
+p {
+    color: $dark-link-color;
 }
 
 .link {
-    color: #A5D7E8;
-    border-bottom: 2px solid transparent;
+    color: $link-color;
+    border-bottom: 2px solid $link-border-color;
     text-decoration: none;
 
     &:hover {
-        color: #fff;
-        border-bottom: 2px solid;
+        color: $link-hover-color;
+        border-bottom: 2px solid $link-hover-border-color;
         transition: 0.1s;
     }
 }
