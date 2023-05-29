@@ -36,9 +36,21 @@
                     onclick="improveText(this)">Make longer</button>
         </div>
         <div class="textarea-container col-12">
-            <textarea id="editor" name="editor" placeholder="Type your text here..."></textarea>
-            <div id="spinnerContainer" class="spinner-container">
-                <div class="spinner-border text-primary"></div>
+            <div class="position-relative">
+                <textarea id="editor" name="editor" placeholder="Type your text here..."></textarea>
+                <div id="editorSpinnerContainer" class="spinner-container">
+                    <div class="spinner-border text-primary"></div>
+                </div>
+            </div>
+            <div class="position-relative">
+                <h3 class="col-12 text-center mt-3">Result</h3>
+                <textarea id="result"
+                          name="editor"
+                          placeholder="Your result would be here"
+                          disabled></textarea>
+                <div id="resultSpinnerContainer" class="spinner-container">
+                    <div class="spinner-border text-primary"></div>
+                </div>
             </div>
         </div>
     </div>

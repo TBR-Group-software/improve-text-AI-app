@@ -22,8 +22,7 @@ function sendText(text, type) {
         console.log(this.responseText);
         console.log('Error');
         createAlert('danger', 'Open AI API error');
-        enabledTextArea();
-        enabledButton();
+        enableAll();
         return false
     }
 
@@ -37,8 +36,7 @@ function sendText(text, type) {
         else {
             changeText(JSON.parse(this.responseText)['text']);
         }
-        enabledTextArea();
-        enabledButton();
+        enableAll();
         return true
     }
 
@@ -49,8 +47,7 @@ function sendText(text, type) {
 
     const postJSON = JSON.stringify(data);
 
-    disabledButton();
-    disabledTextArea();
+    disableAll();
 
     xhttp.open("POST", `/improve_text/`, true);
     xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
@@ -59,34 +56,45 @@ function sendText(text, type) {
 }
 
 function changeText(text) {
-    const textArea = document.getElementById('editor');
+    const textArea = document.getElementById('result');
     textArea.value = text;
 }
 
-function disabledTextArea() {
+function disableTextArea() {
     const textarea = document.getElementById('editor');
     textarea.disabled = true;
 
-    const spinnerContainer = document.getElementById('spinnerContainer');
-    spinnerContainer.style.display = 'flex';
+    const editorSpinnerContainer = document.getElementById('editorSpinnerContainer');
+    editorSpinnerContainer.style.display = 'flex';
 }
 
-function disabledButton() {
+function disableButton() {
     const buttons = document.getElementsByClassName('action');
     for (let button of buttons) {
         button.disabled = true;
     };
 }
 
-function enabledTextArea() {
+function enableTextArea() {
     const textarea = document.getElementById('editor');
     textarea.disabled = false;
 
-    const spinnerContainer = document.getElementById('spinnerContainer');
-    spinnerContainer.style.display = 'none';
+    const editorSpinnerContainer = document.getElementById('editorSpinnerContainer');
+    editorSpinnerContainer.style.display = 'none';
 }
 
-function enabledButton() {
+function disableRusultTextArea() {
+    const resultSpinnerContainer = document.getElementById('resultSpinnerContainer');
+    resultSpinnerContainer.style.display = 'flex';
+}
+
+function enableRusultTextArea() {
+    const resultSpinnerContainer = document.getElementById('resultSpinnerContainer');
+    resultSpinnerContainer.style.display = 'none';
+}
+
+
+function enableButton() {
     const buttons = document.getElementsByClassName('action');
     for (let button of buttons) {
         button.disabled = false;
@@ -108,4 +116,16 @@ function createAlert(type, message) {
     screen.prepend(alert);
 
     return alert;
+}
+
+function disableAll() {
+    disableButton();
+    disableTextArea();
+    disableRusultTextArea();
+}
+
+function enableAll() {
+    enableButton();
+    enableTextArea();
+    enableRusultTextArea();
 }
