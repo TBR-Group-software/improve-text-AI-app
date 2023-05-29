@@ -12,7 +12,7 @@ class OpenAiApiManager:
             messages=[
                 {
                     "role": "system",
-                    "content": f"You are a grammar improvement AI. {instructions}",
+                    "content": f"You are a grammar improvement AI. Please return only text/code. {instructions}",
                 },
                 {"role": "user", "content": text},
             ],

@@ -1,8 +1,9 @@
 from django.urls import path
 
-from .views import IndexView, improve_text_view
+from .views import improve_text_view, CodeView, TextView
 
 urlpatterns = [
-    path("", IndexView.as_view(), name="index"),
+    path("", TextView.as_view(), name="text"),
+    path("code/", CodeView.as_view(), name="code"),
     path("improve_text/", improve_text_view, name="improve_text"),
 ]

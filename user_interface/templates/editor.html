@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% load compress %}
+{% block imports %}
+    {{ block.super }}
+    {% compress css %}
+        <link rel="stylesheet"
+              type="text/x-scss"
+              href="{% static 'scss/editor.scss' %}" />
+    {% endcompress %}
+    {% compress js %}
+        <script src="{% static 'js/editor.js' %}"></script>
+    {% endcompress %}
+{% endblock imports %}
+{% block content %}
+    <div class="editor-container">
+        <h1 class="col-12 mt-3">
+            {% if type == 'text' %}
+                Text
+            {% elif type == 'code' %}
+                Code
+            {% endif %}
+            editor
+        </h1>
+        <div class="actions col-12 justify-content-center mb-3">
+            <button type="button"
+                    class="btn btn-primary action"
+                    id="{% if type == 'text' %}improve{% elif type == 'code' %}improve_code{% endif %}"
+                    onclick="improveText(this)">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>Improve
+            </button>
+            {% if type == 'text' %}
+                <button type="button"
+                        class="btn btn-primary action"
+                        id="correct"
+                        onclick="improveText(this)">Correct grammar</button>
+                <button type="button"
+                        class="btn btn-primary action"
+                        id="shorter"
+                        onclick="improveText(this)">Make shorter</button>
+                <button type="button"
+                        class="btn btn-primary action"
+                        id="longer"
+                        onclick="improveText(this)">Make longer</button>
+                <button type="button"
+                        class="btn btn-primary action"
+                        id="summarize"
+                        onclick="improveText(this)">Summarize</button>
+                <button type="button"
+                        class="btn btn-primary action"
+                        id="capitalize"
+                        onclick="improveText(this)">Capitalize</button>
+            {% elif type == 'code' %}
+                <button type="button"
+                        class="btn btn-primary action"
+                        id="minify"
+                        onclick="improveText(this)">Minify</button>
+                <button type="button"
+                        class="btn btn-primary action"
+                        id="beautify"
+                        onclick="improveText(this)">Beautify</button>
+                <button type="button"
+                        class="btn btn-primary action"
+                        id="compress"
+                        onclick="improveText(this)">Compress</button>
+                <button type="button"
+                        class="btn btn-primary action"
+                        id="decompress"
+                        onclick="improveText(this)">Decompress</button>
+            {% endif %}
+        </div>
+        <div class="textarea-container col-12">
+            <div class="position-relative mb-3">
+                <textarea id="editor"
+                          name="editor"
+                          class="{% if type == 'text' %}text{% elif type == 'code' %}code{% endif %}"
+                          placeholder="Type your {% if type == 'text' %}text{% elif type == 'code' %}code{% endif %} here..."></textarea>
+                <div id="editorSpinnerContainer" class="spinner-container">
+                    <div class="spinner-border text-primary"></div>
+                </div>
+            </div>
+            <div class="position-relative">
+                <textarea id="result"
+                          name="editor"
+                          placeholder="Your result would be here"
+                          class="{% if type == 'text' %}text{% elif type == 'code' %}code{% endif %}"
+                          readonly></textarea>
+                <i class="fa-solid fa-copy position-absolute result-copy-button"
+                   onclick="copyResult()"></i>
+                <div id="resultSpinnerContainer" class="spinner-container">
+                    <div class="spinner-border text-primary"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

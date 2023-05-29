@@ -1,14 +1,15 @@
 from django.shortcuts import render
-from django.views import View
 from django.http import (
     HttpRequest,
     HttpResponse,
 )
 
+from .editor_view import EditorView
 
-class IndexView(View):
-    """Index view."""
+
+class TextView(EditorView):
+    """Text view."""
 
     def get(self, request: HttpRequest) -> HttpResponse:
         """GET request handler."""
-        return render(request, "index.html")
+        return render(request, "editor.html", {"type": "text"})

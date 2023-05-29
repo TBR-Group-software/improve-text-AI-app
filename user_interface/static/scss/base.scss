@@ -12,7 +12,20 @@ body {
 .navbar-dark {
     .navbar-nav {
         .nav-link {
-            color: rgb(115, 152, 164) !important;
+            color: rgb(115, 152, 164);
+            padding: 6px 2px 2px 2px;
+            margin: 0 6px 0 6px;
+
+            &:hover {
+                color: #A5D7E8;
+                border-bottom: 2px solid;
+                transition: 0.1s;
+            }
+        }
+
+        .active {
+            color: #A5D7E8;
+            border-bottom: 2px solid;
         }
     }
 
@@ -21,7 +34,7 @@ body {
     }
 }
 
-.btn{
+.btn {
     border-radius: 15px;
 }
 
@@ -30,7 +43,7 @@ body {
     border-color: #A5D7E8 !important;
     color: #0B2447 !important;
 
-    &:hover{
+    &:hover {
         background-color: #576CBC !important;
         border-color: #576CBC !important;
         color: #0B2447 !important;
@@ -41,7 +54,11 @@ body {
     color: #A5D7E8 !important;
 }
 
-.alert{
+.alert {
     border-radius: 15px;
 
+}
+
+.navbar-toggler {
+    color: #A5D7E8;
 }
