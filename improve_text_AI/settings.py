@@ -81,11 +81,11 @@ WSGI_APPLICATION = "improve_text_AI.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.environ["PSQL_NAME"],
-        "USER": os.environ["PSQL_USER"],
-        "PASSWORD": os.environ["PSQL_PASSWORD"],
-        "HOST": os.environ["PSQL_HOST"],
-        "PORT": os.environ["PSQL_PORT"],
+        "NAME": os.environ["POSTGRES_DB"],
+        "USER": os.environ["POSTGRES_USER"],
+        "PASSWORD": os.environ["POSTGRES_PASSWORD"],
+        "HOST": os.environ["POSTGRES_HOST"],
+        "PORT": os.environ["POSTGRES_PORT"],
     }
 }
 

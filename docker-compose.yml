@@ -1,10 +1,10 @@
-version: "3.8"
+version: "3.9"
 services:
-  improve-text-AI-app:
+  improve-text-ai-app:
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
-    container_name: improve-text-AI-app
+    container_name: improve-text-ai-app
     restart: always
     ports:
       - "8000:8000"
@@ -19,61 +19,63 @@ services:
       - static-volume:/app/staticfiles
       - media-volume:/app/media
     networks:
-      - improve-text-AI-network
+      - improve-text-ai-network
     environment:
-      - PSQL_USER=${PSQL_USER}
-      - PSQL_PASSWORD=${PSQL_PASSWORD}
-      - PSQL_DB=${PSQL_NAME}
-      - PSQL_HOST=improve-text-AI-db
-      - PSQL_PORT=${PSQL_PORT}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_HOST=improve-text-ai-db
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
       - DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
       - DJANGO_DEBUG=${DJANGO_DEBUG}
     logging:
-            driver: "json-file"
-            options:
-                max-size: "50m"
+      driver: "json-file"
+      options:
+        max-size: "50m"
     depends_on:
-      - improve-text-AI-db
-  improve-text-AI-nginx:
+      - improve-text-ai-db
+  improve-text-ai-nginx:
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
-    container_name: improve-text-AI-nginx
+    container_name: improve-text-ai-nginx
     restart: always
     ports:
       - 80:80
     networks:
-      - improve-text-AI-network
+      - improve-text-ai-network
     volumes:
       - static-volume:/var/www/app/staticfiles
       - media-volume:/var/www/app/media
     depends_on:
-      - improve-text-AI-app
-  improve-text-AI-db:
+      - improve-text-ai-app
+  improve-text-ai-db:
     image: postgres:15.1-alpine
-    container_name: improve-text-AI-db
+    container_name: improve-text-ai-db
     restart: always
     environment:
-      - POSTGRES_USER=${PSQL_USER}
-      - POSTGRES_PASSWORD=${PSQL_PASSWORD}
-      - POSTGRES_DB=${PSQL_NAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
-      - '${PSQL_PORT}:${PSQL_PORT}'
+      - '${POSTGRES_PORT}:${POSTGRES_PORT}'
     volumes:
       - db:/var/lib/postgresql/data
     networks:
-      - improve-text-AI-network
+      - improve-text-ai-network
     logging:
-          driver: "json-file"
-          options:
-              max-size: "50m"
+      driver: "json-file"
+      options:
+        max-size: "50m"
 volumes:
   static-volume:
   media-volume:
   db:
     driver: local
 networks:
-  improve-text-AI-network:
+  improve-text-ai-network:
     external: true
     driver: bridge
