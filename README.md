@@ -2,6 +2,16 @@
 
 The goal of this project is to provide a user-friendly interface for editing and modifying text and code using ChatGPT. This project is built using the Django framework and several other libraries.
 
+<p float="center", align="justify">
+  <img src="https://github.com/TBR-Group-software/improve-text-AI-app/blob/main/images/mob%201.gif" width="250" />
+
+  <img src="https://github.com/TBR-Group-software/improve-text-AI-app/blob/main/images/mob%202.gif" width="250" />
+     
+  <img src="https://github.com/TBR-Group-software/improve-text-AI-app/blob/main/images/mob%203.gif" width="250" />
+</p>
+<p>
+  <img src="https://github.com/TBR-Group-software/improve-text-AI-app/blob/main/images/desk_improve_ai.gif" width="750" />
+</p>
 
 
 ## Features
