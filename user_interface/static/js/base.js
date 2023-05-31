@@ -32,3 +32,7 @@ function createCloseButton() {
     closeButton.setAttribute('data-bs-dismiss', 'alert');
     return closeButton;
 }
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

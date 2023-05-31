@@ -77,6 +77,18 @@ body {
     }
 }
 
+.btn-outline-primary{
+    background-color: transparent !important;
+    border-color: $primary-btn-border-color !important;
+    color: $primary-btn-border-color !important;
+
+    &:hover {
+        background-color: $primary-btn-hover-bg-color !important;
+        border-color: $primary-btn-hover-border-color !important;
+        color: $primary-btn-hover-text-color !important;
+    }
+}
+
 .text-primary {
     color: $primary-text-color !important;
 }
@@ -110,5 +122,16 @@ p {
         color: $link-hover-color;
         border-bottom: 2px solid $link-hover-border-color;
         transition: 0.1s;
+    }
+}
+
+.modal-dialog{
+    max-width: 900px;
+    .modal-header, .modal-footer {
+        border-color: #A5D7E8!important;
+    }
+    .modal-content{
+        background-color: #19376D!important;
+        border-radius: 15px;
     }
 }

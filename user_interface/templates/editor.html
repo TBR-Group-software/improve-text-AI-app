@@ -30,52 +30,58 @@
                 Code editor ✨
             {% endif %}
         </h1>
-        <div class="actions col-12 justify-content-center mb-3">
+        <div class="actions col-12 justify-content-center mt-3">
             <button type="button"
-                    class="btn btn-primary action"
+                    class="btn btn-primary action mb-3"
                     id="{% if type == 'text' %}improve{% elif type == 'code' %}improve_code{% endif %}"
                     onclick="improveText(this)">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>Improve
             </button>
             {% if type == 'text' %}
                 <button type="button"
-                        class="btn btn-primary action"
+                        class="btn btn-primary action mb-3"
                         id="correct"
                         onclick="improveText(this)">Correct grammar</button>
                 <button type="button"
-                        class="btn btn-primary action"
+                        class="btn btn-primary action mb-3"
                         id="shorter"
                         onclick="improveText(this)">Make shorter</button>
                 <button type="button"
-                        class="btn btn-primary action"
+                        class="btn btn-primary action mb-3"
                         id="longer"
                         onclick="improveText(this)">Make longer</button>
                 <button type="button"
-                        class="btn btn-primary action"
+                        class="btn btn-primary action mb-3"
                         id="summarize"
                         onclick="improveText(this)">Summarize</button>
                 <button type="button"
-                        class="btn btn-primary action"
+                        class="btn btn-primary action mb-3"
                         id="capitalize"
                         onclick="improveText(this)">Capitalize</button>
             {% elif type == 'code' %}
                 <button type="button"
-                        class="btn btn-primary action"
+                        class="btn btn-primary action mb-3"
                         id="minify"
                         onclick="improveText(this)">Minify</button>
                 <button type="button"
-                        class="btn btn-primary action"
+                        class="btn btn-primary action mb-3"
                         id="beautify"
                         onclick="improveText(this)">Beautify</button>
                 <button type="button"
-                        class="btn btn-primary action"
+                        class="btn btn-primary action mb-3"
                         id="compress"
                         onclick="improveText(this)">Compress</button>
                 <button type="button"
-                        class="btn btn-primary action"
+                        class="btn btn-primary action mb-3"
                         id="decompress"
                         onclick="improveText(this)">Decompress</button>
             {% endif %}
+            <button type="button"
+                    class="btn btn-outline-primary action mb-3 float-end"
+                    id="history"
+                    onclick="showHistoryModal({% if type == 'text' %}'TEXT'{% elif type == 'code' %}'CODE'{% endif %})">
+                <i class="fa-solid fa-clock-rotate-left"></i> History
+            </button>
         </div>
         <div class="textarea-container col-12">
             <div class="position-relative mb-3">
@@ -89,7 +95,7 @@
             </div>
             <div class="position-relative">
                 <textarea id="result"
-                          name="editor"
+                          name="result"
                           placeholder="Your result would be here"
                           class="{% if type == 'text' %}text{% elif type == 'code' %}code{% endif %}"
                           readonly></textarea>
@@ -97,6 +103,20 @@
                    onclick="copyResult()"></i>
                 <div id="resultSpinnerContainer" class="spinner-container">
                     <div class="spinner-border text-primary"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="historyModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">History</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
